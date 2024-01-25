@@ -1401,6 +1401,7 @@ class HELIOS extends IPSModule
             foreach ($dataAR as $index1 => $arrayEntry) {
                 if (@count($arrayEntry) > 0) {
                     foreach ($arrayEntry as $indexFileName => $filesAR) {
+                        IPS_LogMessage('test',$filesAR);
                         if (@array_key_exists('DDLB', $filesAR) === true) {
                             foreach ($filesAR['DDLB'] as $DDLBentry) {
                                 if ((@array_key_exists('ID', $DDLBentry) === true) && (@array_key_exists('OPT', $DDLBentry) === true)) {
