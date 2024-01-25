@@ -2010,7 +2010,7 @@ class HELIOS extends IPSModule
             return $array[$keyFound];
         }
 
-        return false;
+        return [];
     }
 
 
