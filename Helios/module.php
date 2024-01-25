@@ -1401,16 +1401,17 @@ class HELIOS extends IPSModule
             foreach ($dataAR as $index1 => $arrayEntry) {
                 if (@count($arrayEntry) > 0) {
                     foreach ($arrayEntry as $indexFileName => $filesAR) {
-                        IPS_LogMessage('test',var_dump($filesAR));
-                        if (@array_key_exists('DDLB', $filesAR) === true) {
-                            foreach ($filesAR['DDLB'] as $DDLBentry) {
-                                if ((@array_key_exists('ID', $DDLBentry) === true) && (@array_key_exists('OPT', $DDLBentry) === true)) {
-                                    if ($DDLBentry['ID'] === $id) {
-                                        if ($DebugActive === true) {
-                                            $this->SendDebug(__FUNCTION__, 'DDLBentry = ' . $this->DataToString($DDLBentry), 0);
+                        if (is_array($filesAR)) {
+                            if (@array_key_exists('DDLB', $filesAR) === true) {
+                                foreach ($filesAR['DDLB'] as $DDLBentry) {
+                                    if ((@array_key_exists('ID', $DDLBentry) === true) && (@array_key_exists('OPT', $DDLBentry) === true)) {
+                                        if ($DDLBentry['ID'] === $id) {
+                                            if ($DebugActive === true) {
+                                                $this->SendDebug(__FUNCTION__, 'DDLBentry = ' . $this->DataToString($DDLBentry), 0);
+                                            }
+    
+                                            return $DDLBentry['OPT'];
                                         }
-
-                                        return $DDLBentry['OPT'];
                                     }
                                 }
                             }
