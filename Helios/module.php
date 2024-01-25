@@ -951,13 +951,11 @@ class HELIOS extends IPSModule
         } else {
             $dataAR = $this->Search_DataAR($id, 'ID');
 
-            if (is_array($dataAR)) {
                 if (@array_key_exists('Value', $dataAR) === true) {
                     if ($dataAR['Value'] !== '-') {
                         return $dataAR['Value'];
                     }
                 }
-            }
         }
 
         if ($id === 'v02152') {
